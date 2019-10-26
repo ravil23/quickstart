@@ -18,4 +18,4 @@ H 1
 ```
 
 ## Programming languages
-- [Python version 3 or higher](https://github.com/ravil23/quickstart/tree/master/python)
+- [Python version 3](https://github.com/ravil23/quickstart/tree/master/python)

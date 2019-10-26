@@ -1,4 +1,4 @@
-# Python version 3 or higher
+# Python version 3
 
 ## Run
 ```
