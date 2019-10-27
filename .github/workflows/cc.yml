@@ -15,7 +15,7 @@ jobs:
       max-parallel: 8
       matrix:
         os: [ubuntu-16.04, ubuntu-18.04]
-        cpp-std: [c++11, c++14, c++17]
+        cpp-std: [c++14, c++17]
 
     steps:
     - uses: actions/checkout@v1
@@ -26,7 +26,7 @@ jobs:
     - name: Compile
       run: |
         mkdir -p bin
-        g++ -std=${{ matrix.cpp-std }} cc/main.cc -o bin/main
+        g++ -std=${{ matrix.cpp-std }} cc/main.cc cc/wc.cc -I cc/ -o bin/main
     - name: Run
       run: |
         bin/main
