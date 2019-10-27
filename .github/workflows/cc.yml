@@ -14,15 +14,21 @@ jobs:
     strategy:
       max-parallel: 8
       matrix:
-        os: [ubuntu-16.04, ubuntu-18.04]
+        os: [ubuntu-16.04, ubuntu-18.04, macOS-10.14]
         cpp-std: [c++14, c++17]
 
     steps:
     - uses: actions/checkout@v1
-    - name: Set up C++ compiler
+    - name: Set up C++ compiler on Ubuntu
+      if: matrix.os == 'ubuntu-16.04' || matrix.os == 'ubuntu-18.04'
       run: |
         sudo apt-get update
         sudo apt-get -y --no-install-recommends install cmake g++ make unzip wget
+    - name: Set up C++ compiler on Mac OS
+      if: matrix.os == 'macOS-10.14'
+      run: |
+        /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+        brew install cmake gcc make unzip wget
     - name: Install gtest
       env:
         GTEST_VERSION: 1.10.0
@@ -35,7 +41,6 @@ jobs:
         cmake ..
         make -j8
         sudo make install
-        sudo ldconfig
         rm -rf gtest.zip googletest-release-${GTEST_VERSION}
     - name: Test with gtest
       run: |
