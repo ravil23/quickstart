@@ -10,10 +10,10 @@ Each program solve the same problem - case insensitive counting of words from in
 For example each program produce text `To be, or not to be?` as input and write result to standart output:
 ```
 Words count in sentence: "To be, or not to be?"
-to 2
-be 2
-or 1
-not 1
+2 to
+2 be
+1 or
+1 not
 ```
 
 ## Programming languages
