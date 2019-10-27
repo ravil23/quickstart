@@ -1,6 +1,6 @@
 import unittest
 
-from main import sort_by_values_and_keys, word_counts
+from wc import sort_by_values_and_keys, word_counts
 
 
 class TestWordCounts(unittest.TestCase):
@@ -50,7 +50,7 @@ class TestSortByValuesAndKeys(unittest.TestCase):
 
     def test_collection_ascending_with_uniq_values(self) -> None:
         collection = {'a': 1, 'b': 3, 'c': 2}
-        expected = [('a', 1), ('c', 2), ('b', 3)]
+        expected = [(1, 'a'), (2, 'c'), (3, 'b')]
 
         actual = sort_by_values_and_keys(collection, reverse=False)
 
@@ -58,7 +58,7 @@ class TestSortByValuesAndKeys(unittest.TestCase):
 
     def test_collection_descending_with_uniq_values(self) -> None:
         collection = {'a': 1, 'b': 3, 'c': 2}
-        expected = [('b', 3), ('c', 2), ('a', 1)]
+        expected = [(3, 'b'), (2, 'c'), (1, 'a')]
 
         actual = sort_by_values_and_keys(collection, reverse=True)
 
@@ -66,7 +66,7 @@ class TestSortByValuesAndKeys(unittest.TestCase):
 
     def test_collection_ascending_with_equal_values(self) -> None:
         collection = {'a': 0, 'c': 0, 'b': 0}
-        expected = [('a', 0), ('b', 0), ('c', 0)]
+        expected = [(0, 'a'), (0, 'b'), (0, 'c')]
 
         actual = sort_by_values_and_keys(collection, reverse=False)
 
@@ -74,7 +74,7 @@ class TestSortByValuesAndKeys(unittest.TestCase):
 
     def test_collection_descending_with_equal_values(self) -> None:
         collection = {'a': 0, 'c': 0, 'b': 0}
-        expected = [('c', 0), ('b', 0), ('a', 0)]
+        expected = [(0, 'c'), (0, 'b'), (0, 'a')]
 
         actual = sort_by_values_and_keys(collection, reverse=True)
 
@@ -86,10 +86,10 @@ class TestOfIntegration(unittest.TestCase):
     def test_example(self) -> None:
         text = 'To be, or not to be?'
         expected = [
-                ('to', 2),
-                ('be', 2),
-                ('or', 1),
-                ('not', 1),
+                (2, 'to'),
+                (2, 'be'),
+                (1, 'or'),
+                (1, 'not'),
         ]
 
         collection = word_counts(text)
