@@ -1,4 +1,4 @@
-![Python](https://github.com/ravil23/quickstart/workflows/python/badge.svg)
+![Python](https://github.com/ravil23/quickstart/workflows/Python/badge.svg)
 
 # Quick start
 This project is for quick dive into different programming languages with one simple and representative task.
