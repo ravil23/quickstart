@@ -96,7 +96,3 @@ class TestOfIntegration(unittest.TestCase):
         actual = sort_by_values_and_keys(collection, reverse=True)
 
         self.assertListEqual(expected, actual)
-
-
-if __name__ == '__main__':
-    unittest.main()
