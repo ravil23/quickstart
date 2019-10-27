@@ -1,14 +1,13 @@
+from collections import defaultdict
 from typing import Dict, List, Tuple
 
 
-def symbol_counts(text: str) -> Dict[str, int]:
-    counts = {}
-    for symbol in text:
-        if symbol != ' ':
-            if symbol in counts:
-                counts[symbol] += 1
-            else:
-                counts[symbol] = 1
+def word_counts(text: str) -> Dict[str, int]:
+    counts = defaultdict(int)
+    for part in text.split():
+        word = ''.join([i for i in part if i.isalpha()])
+        if word != '':
+            counts[word.lower()] += 1
     return counts
 
 
@@ -25,12 +24,12 @@ def sort_by_values_and_keys(
 
 
 def main() -> None:
-    text = 'Hello world!'
-    counts = symbol_counts(text)
+    text = 'To be, or not to be?'
+    counts = word_counts(text)
     sorted_items = sort_by_values_and_keys(counts, reverse=True)
-    print('Symbols count in sequence:', text)
-    for symbol, count in sorted_items:
-        print(symbol, count)
+    print(f'Words count in sentence: "{text}"')
+    for word, count in sorted_items:
+        print(word, count)
 
 
 if __name__ == '__main__':
