@@ -1,4 +1,5 @@
 ![Python](https://github.com/ravil23/quickstart/workflows/Python/badge.svg)
+![C++](https://github.com/ravil23/quickstart/workflows/C++/badge.svg)
 
 # Quick start
 This project is for quick dive into different programming languages with one simple and representative task.
@@ -17,3 +18,4 @@ not 1
 
 ## Programming languages
 - [Python](https://github.com/ravil23/quickstart/tree/master/python)
+- [C++](https://github.com/ravil23/quickstart/tree/master/cpp)

@@ -1,0 +1,27 @@
+name: C++
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ${{ matrix.os }}
+    strategy:
+      max-parallel: 8
+      matrix:
+        os: [ubuntu-16.04, ubuntu-18.04]
+        cpp-std: [c++11, c++14, c++17]
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Set up C++ compiler
+      run: |
+        sudo apt-get update
+        sudo apt-get -y install g++
+    - name: Compile
+      run: |
+        mkdir -p bin
+        g++ -std=${{ matrix.cpp-std }} cc/main.cc -o bin/main
+    - name: Run
+      run: |
+        bin/main
