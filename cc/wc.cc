@@ -11,18 +11,23 @@ const WordCountsMap wordCounts(const std::string& text) {
     WordCountsMap counts;
     std::istringstream ss(text);
     do {
-        std::string buffer;
-        ss >> buffer;
         std::string word;
+        ss >> word;
+	word.erase(
+            std::remove_if(
+                word.begin(),
+                word.end(),
+                [](const auto& symbol) {
+                    return not std::isalpha(symbol, std::locale());
+                }
+            ),
+            word.end());
         std::transform(
-             buffer.cbegin(),
-             buffer.cend(),
-             std::back_inserter(word),
+             word.cbegin(),
+             word.cend(),
+             word.begin(),
              [](const auto& symbol) {
-                 if (std::isalpha(symbol, std::locale())) {
-                     return std::tolower(symbol, std::locale());
-                 }
-		 return '\0';
+                 return std::tolower(symbol, std::locale());
              });
 	if (not word.empty()) {
              ++counts[word];

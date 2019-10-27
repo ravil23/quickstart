@@ -4,12 +4,14 @@
 - C++ 14, C++ 17
 - OS: Ubuntu 16.04, Ubuntu 18.04
 
-## Compile and run
+## Run
 ```
-g++ -std=c++17 main.cc -o main
+g++ -std=c++17 main.cc wc.cc -I . -o main
 ./main
 ```
 
 ## Test
 ```
+g++ -std=c++17 test.cc wc.cc -I . -l gmock -l gtest -l gtest_main -o test
+./test
 ```

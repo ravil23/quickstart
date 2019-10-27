@@ -22,11 +22,28 @@ jobs:
     - name: Set up C++ compiler
       run: |
         sudo apt-get update
-        sudo apt-get -y install g++
-    - name: Compile
+        sudo apt-get -y --no-install-recommends install cmake g++ make unzip wget
+    - name: Install gtest
+      env:
+        GTEST_VERSION: 1.10.0
+      run: |
+        wget --no-check-certificate https://github.com/google/googletest/archive/release-${GTEST_VERSION}.zip -O gtest.zip
+        unzip gtest.zip
+        cd googletest-release-${GTEST_VERSION}
+        mkdir build
+        cd build
+        cmake ..
+        make -j8
+        sudo make install
+        sudo ldconfig
+        rm -rf gtest.zip googletest-release-${GTEST_VERSION}
+    - name: Test with gtest
+      run: |
+        mkdir -p bin
+        g++ -std=${{ matrix.cpp-std }} cc/test.cc cc/wc.cc -I cc/ -l gmock -l gtest -l gtest_main -l pthread -o bin/test
+        bin/test
+    - name: Run example
       run: |
         mkdir -p bin
         g++ -std=${{ matrix.cpp-std }} cc/main.cc cc/wc.cc -I cc/ -o bin/main
-    - name: Run
-      run: |
         bin/main

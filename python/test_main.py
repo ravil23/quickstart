@@ -65,7 +65,7 @@ class TestSortByValuesAndKeys(unittest.TestCase):
         self.assertListEqual(expected, actual)
 
     def test_collection_ascending_with_equal_values(self) -> None:
-        collection = {'a': 0, 'c': 0, 'b': 0}
+        collection = {'b': 0, 'c': 0, 'a': 0}
         expected = [(0, 'a'), (0, 'b'), (0, 'c')]
 
         actual = sort_by_values_and_keys(collection, reverse=False)
