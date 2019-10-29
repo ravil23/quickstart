@@ -45,7 +45,7 @@ jobs:
     - name: Test with gtest
       run: |
         mkdir -p bin
-        g++ -std=${{ matrix.cpp-std }} cc/test.cc cc/wc.cc -I cc/ -l gmock -l gtest -l gtest_main -l pthread -o bin/test
+        g++ -std=${{ matrix.cpp-std }} cc/test_wc.cc cc/wc.cc -I cc/ -l gmock -l gtest -l gtest_main -l pthread -o bin/test
         bin/test
     - name: Run example
       run: |

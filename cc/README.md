@@ -12,6 +12,6 @@ g++ -std=c++17 main.cc wc.cc -I . -o main
 
 ## Test
 ```
-g++ -std=c++17 test.cc wc.cc -I . -l gmock -l gtest -l gtest_main -o test
+g++ -std=c++17 test_wc.cc wc.cc -I . -l gmock -l gtest -l gtest_main -o test
 ./test
 ```
