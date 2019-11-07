@@ -14,7 +14,7 @@ jobs:
     strategy:
       max-parallel: 8
       matrix:
-        os: [ubuntu-16.04, ubuntu-18.04, macOS-10.14]
+        os: [ubuntu-16.04, ubuntu-18.04, macos-latest]
         cpp-std: [c++14, c++17]
 
     steps:
@@ -25,7 +25,7 @@ jobs:
         sudo apt-get update
         sudo apt-get -y --no-install-recommends install cmake g++ make unzip wget
     - name: Set up C++ compiler on Mac OS
-      if: matrix.os == 'macOS-10.15'
+      if: matrix.os == 'macos-latest'
       run: |
         /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
         brew install cmake gcc make unzip wget
