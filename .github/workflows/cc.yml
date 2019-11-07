@@ -28,7 +28,8 @@ jobs:
       if: matrix.os == 'macos-latest'
       run: |
         /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-        brew install cmake gcc make unzip wget
+        brew install gcc make unzip wget
+        brew upgrade cmake
     - name: Install gtest
       env:
         GTEST_VERSION: 1.10.0
